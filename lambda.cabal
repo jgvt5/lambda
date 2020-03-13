@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f63443b91bcf5466b626ee9293bf75210cd991caf4ed52292dd238b800617a9e
+-- hash: 7e0949f409e44cb22e98b2a814807936a549de68354cc1883ca7769fe1c64d1a
 
 name:           lambda
 version:        0.1.0.0
@@ -26,8 +26,6 @@ source-repository head
   location: https://github.com/githubuser/lambda
 
 library
-  exposed-modules:
-      Lib
   other-modules:
       Paths_lambda
   hs-source-dirs:
