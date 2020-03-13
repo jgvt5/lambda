@@ -1,6 +1,6 @@
 module Main where
 
-import src.Term
+import Terms
 
 main :: IO ()
 main = print "unko"

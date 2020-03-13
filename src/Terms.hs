@@ -1,4 +1,4 @@
-module Term where
+module Terms where
 
 data Term = Var Char | App Term Term | Abst Char Term
 
