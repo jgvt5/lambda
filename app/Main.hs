@@ -8,5 +8,4 @@ main = do
     let x = Abst 'x' $ App (Var 'x')(Var 'x')
         y = Abst 'x' $ App (Var 'x')(Var 'x')
         z = App x y
-    print $ freeVars x
-    print $ beta1 z
+    printBeta z

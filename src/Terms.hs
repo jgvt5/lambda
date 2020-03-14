@@ -41,8 +41,20 @@ assign x n t@(Abst y m)
 
 isNormal :: Term -> Bool
 isNormal (App (Abst c t) t2) = False
+isNormal (App t1 t2) = isNormal t1 && isNormal t2
+isNormal (Abst _ t) = isNormal t
 isNormal _ = True
 
 beta1 :: Term -> Term
 beta1 (App (Abst x m) n) = assign x n m
-beta1 t = t
+beta1 (App t1 t2)
+    | not (isNormal t1) = beta1 t1
+    | otherwise = beta1 t2
+beta1 (Abst _ t) | not (isNormal t) = beta1 t
+
+printBeta :: Term -> IO ()
+printBeta t = do
+    print t
+    if isNormal t
+    then return ()
+    else printBeta $ beta1 t
