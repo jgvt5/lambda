@@ -32,9 +32,11 @@ library
       src
   exposed-modules:
       Terms
+    , Parser
   build-depends:
       base >=4.7 && <5
       , containers
+      , parsec
   default-language: Haskell2010
 
 executable lambda-exe
@@ -48,6 +50,7 @@ executable lambda-exe
       base >=4.7 && <5
     , containers
     , lambda
+    , parsec
   default-language: Haskell2010
 
 test-suite lambda-test
@@ -62,4 +65,5 @@ test-suite lambda-test
       base >=4.7 && <5
     , containers
     , lambda
+    , parsec
   default-language: Haskell2010

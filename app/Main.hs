@@ -1,11 +1,14 @@
 module Main where
 
 import Data.Set
+import Text.Parsec
 import Terms
+import Parser
 
 main :: IO ()
 main = do
-    let x = Abst 'x' $ App (Var 'x')(Var 'x')
-        y = Abst 'x' $ App (Var 'x')(Var 'x')
-        z = App x y
-    printBeta z
+    t <- getLine
+    print "pumomoenguegegionmoe"
+    case (parse term "" t) of
+        Left err  -> print err
+        Right x  -> printBeta x

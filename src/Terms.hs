@@ -6,10 +6,8 @@ data Term = Var Char | App Term Term | Abst Char Term
 
 instance Show Term where
     show (Var c) = [c]
-    show (App t@(Abst _ _) (Var c)) = "(" ++ show t ++ ")" ++ [c]
-    show (App t1 (Var c)) = show t1 ++ [c]
-    show (App t1 t2) = show t1 ++ "(" ++ show t2 ++ ")"
-    show (Abst c t) = "\\" ++ [c] ++ "." ++ show t
+    show (App t1 t2) = "(" ++ show t1 ++ show t2 ++ ")"
+    show (Abst c t) = "(\\" ++ [c] ++ "." ++ show t ++ ")"
 
 
 freeVars :: Term -> Set Char
@@ -47,10 +45,11 @@ isNormal _ = True
 
 beta1 :: Term -> Term
 beta1 (App (Abst x m) n) = assign x n m
-beta1 (App t1 t2)
-    | not (isNormal t1) = beta1 t1
-    | otherwise = beta1 t2
-beta1 (Abst _ t) | not (isNormal t) = beta1 t
+beta1 t@(App t1 t2)
+    | not (isNormal t1) = App (beta1 t1) t2
+    | not (isNormal t2) = App t1 $ beta1 t2
+    | otherwise = t
+beta1 (Abst c t) | not (isNormal t) = Abst c $ beta1 t
 
 printBeta :: Term -> IO ()
 printBeta t = do
