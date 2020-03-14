@@ -8,7 +8,7 @@ import Parser
 main :: IO ()
 main = do
     t <- getLine
-    print "beta reduction"
+    putStrLn "beta reduction!"
     case (parse term "" t) of
         Left err  -> print err
         Right x  -> printBeta x

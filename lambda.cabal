@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 7e0949f409e44cb22e98b2a814807936a549de68354cc1883ca7769fe1c64d1a
+-- hash: 792e91e64747f0ea20d289376a61883dc08eedd5fa32dd54e84b56fb56f2e98d
 
 name:           lambda
 version:        0.1.0.0
@@ -26,17 +26,17 @@ source-repository head
   location: https://github.com/githubuser/lambda
 
 library
+  exposed-modules:
+      Parser
+      Terms
   other-modules:
       Paths_lambda
   hs-source-dirs:
       src
-  exposed-modules:
-      Terms
-    , Parser
   build-depends:
       base >=4.7 && <5
-      , containers
-      , parsec
+    , containers
+    , parsec
   default-language: Haskell2010
 
 executable lambda-exe
