@@ -1,2 +1,6 @@
+import Terms
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = do
+    let x = App (Abst 'y' $ Var 'y') (Var 'x')
+    putStrLn $ show x
