@@ -7,8 +7,10 @@ import           Parser
 
 main :: IO ()
 main = do
-    t <- getLine
-    putStrLn "beta reduction!"
-    case parse term "" t of
-        Left  err -> print err
-        Right x   -> printBeta x
+    filename <- getLine
+    input    <- readFile filename
+    putStrLn "excute"
+    case parse term "" input of
+        Left err -> print err
+        Right x ->
+            print $ restoreNames (getContext x) (removeNames (getContext x) x)

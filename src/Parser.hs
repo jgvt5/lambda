@@ -3,6 +3,7 @@ module Parser where
 import           Terms
 import           Text.Parsec
 import           Text.Parsec.String
+import           Text.Parsec.Pos
 
 var :: Parser Term
 var = do
