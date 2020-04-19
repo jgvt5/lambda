@@ -1,14 +1,14 @@
 module Main where
 
-import Data.Set
-import Text.Parsec
-import Terms
-import Parser
+import           Data.Set
+import           Text.Parsec
+import           Terms
+import           Parser
 
 main :: IO ()
 main = do
     t <- getLine
     putStrLn "beta reduction!"
-    case (parse term "" t) of
-        Left err  -> print err
-        Right x  -> printBeta x
+    case parse term "" t of
+        Left  err -> print err
+        Right x   -> printBeta x
